@@ -38,3 +38,23 @@ for i in range(numRect):
     else:
         print("Invalid method. Use L, R, or M.")
         break
+
+    height = f(x_sample)
+    area = height * dx
+    total_area += area
+
+    print(f"Rect {i+1}: interval [{left:.3f}, {right:.3f}] "
+          f"sample x = {x_sample:.3f} "
+          f"height f(x) = {height:.3f} "
+          f"area = {area:.3f}")
+
+print("="*50)
+print(f"Total estimated area = {total_area:.3f}")
+print("="*50)
+
+# Plotting
+x_vals = np.linspace(lowerB, upperB, 200)
+y_vals = [f(x) for x in x_vals]
+
+plt.figure()
+plt.plot(x_vals, y_vals, label=f"f(x) = {func}")
