@@ -14,3 +14,16 @@ method = input("Choose method (L=left, R=right, M=midpoint): ").upper()
 def f(x):
     return eval(func, {"x": x, **globals()})
 
+# Setup
+dx = (upperB - lowerB) / numRect
+total_area = 0
+
+print("\n" + "="*50)
+print(f"Rectangle Method: {method}")
+print("="*50)
+
+# Rectangle calculation
+for i in range(numRect):
+    left = lowerB + i * dx
+    right = left + dx
+
