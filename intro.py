@@ -27,3 +27,14 @@ for i in range(numRect):
     left = lowerB + i * dx
     right = left + dx
 
+    # Differentiates sample points
+    if method == "L":
+        x_sample = left
+    elif method == "R":
+        x_sample = right
+        align = 'edge'
+    elif method == "M":
+        x_sample = (left + right) / 2
+    else:
+        print("Invalid method. Use L, R, or M.")
+        break
