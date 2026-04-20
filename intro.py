@@ -58,3 +58,34 @@ y_vals = [f(x) for x in x_vals]
 
 plt.figure()
 plt.plot(x_vals, y_vals, label=f"f(x) = {func}")
+
+# Draws rectangles
+for i in range(numRect):
+    left = lowerB + i * dx
+    right = left + dx
+
+    if method == "L":
+        x_sample = left
+        align = 'edge'
+    elif method == "R":
+        x_sample = right
+        align = 'edge'
+        left = right - dx
+    else:  # Midpoint
+        x_sample = (left + right) / 2
+        align = 'center'
+
+    plt.bar(left if align == 'edge' else x_sample,
+            f(x_sample),
+            width=dx,
+            align=align,
+            alpha=0.3,
+            edgecolor='black')
+
+plt.title(f"Area Estimate ({method} rectangles) = {total_area:.3f}")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.grid()
+
+plt.show()
