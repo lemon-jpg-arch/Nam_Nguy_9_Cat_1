@@ -3,12 +3,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Asks for user inputs
-func = input("Enter a function in terms of x (e.g. x2, x^3 + 2, sin(x)): ")
+func = input("Enter a function in terms of x (e.g. x2, x**3 + 2, sin(x)): ")
 func = func.replace("^","**")
 lowerB = float(input("Lower bound a = "))
 upperB = float(input("Upper bound b = "))
 numRect = int(input("How many rectangles? n = "))
 method = input("Choose method (L=left, R=right, M=midpoint): ").upper()
+if numRect <= 0:
+    print("Number of rectangles must be positive.")
+    exit()
 
 # Defined function
 def f(x):
@@ -37,10 +40,10 @@ for i in range(numRect):
         x_sample = (left + right) / 2
     else:
         print("Invalid method. Use L, R, or M.")
-        break
+        exit()
 
     height = f(x_sample)
-    area = height * dx
+    area = abs(height * dx)
     total_area += area
 
     print(f"Rect {i+1}: interval [{left:.3f}, {right:.3f}] "
@@ -66,22 +69,25 @@ for i in range(numRect):
 
     if method == "L":
         x_sample = left
+        x_pos = left
         align = 'edge'
     elif method == "R":
         x_sample = right
+        x_pos = left
         align = 'edge'
-        left = right - dx
     else:  # Midpoint
         x_sample = (left + right) / 2
+        x_pos = x_sample
         align = 'center'
 
-    plt.bar(left if align == 'edge' else x_sample,
+    plt.bar(x_pos,
             f(x_sample),
             width=dx,
             align=align,
             alpha=0.3,
             edgecolor='black')
 
+# Prints plots
 plt.title(f"Area Estimate ({method} rectangles) = {total_area:.3f}")
 plt.xlabel("x")
 plt.ylabel("y")
