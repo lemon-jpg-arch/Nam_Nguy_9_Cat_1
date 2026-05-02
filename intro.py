@@ -80,7 +80,7 @@ for i in range(numRect):
         align = 'center'
 
     plt.bar(x_pos,
-            f(x_sample),
+        abs(f(x_sample)),
             width=dx,
             align=align,
             alpha=0.3,
