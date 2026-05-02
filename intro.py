@@ -35,7 +35,6 @@ for i in range(numRect):
         x_sample = left
     elif method == "R":
         x_sample = right
-        align = 'edge'
     elif method == "M":
         x_sample = (left + right) / 2
     else:
