@@ -98,6 +98,9 @@ for i in range(numRect):
 plt.title(f"Area Estimate ({method} rectangles) = {total_area:.3f}")
 plt.xlabel("x")
 plt.ylabel("y")
+plt.text(lowerB, max(y_vals),
+         f"Area ≈ {total_area:.3f}",
+         fontsize=10)
 plt.legend()
 plt.grid()
 
