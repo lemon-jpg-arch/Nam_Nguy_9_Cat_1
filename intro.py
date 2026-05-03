@@ -1,6 +1,7 @@
 from math import *
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.integrate import quad
 
 # Asks for user inputs
 func = input("Enter a function in terms of x (e.g. x2, x**3 + 2, sin(x)): ")
@@ -53,6 +54,10 @@ for i in range(numRect):
 print("="*50)
 print(f"Total estimated area = {total_area:.3f}")
 print("="*50)
+
+exact_area, _ = quad(f, lowerB, upperB)
+print(f"Exact area = {exact_area:.3f}")
+print(f"Error = {abs(exact_area - total_area):.3f}")
 
 # Plotting
 x_vals = np.linspace(lowerB, upperB, 200)
