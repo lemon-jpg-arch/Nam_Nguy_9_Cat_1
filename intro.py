@@ -56,6 +56,9 @@ print(f"Total estimated area = {total_area:.3f}")
 print("="*50)
 
 exact_area, _ = quad(f, lowerB, upperB)
+
+method_names = {"L": "Left", "R": "Right", "M": "Midpoint"}
+print(f"Rectangle Method: {method_names[method]}")
 print(f"Exact area = {exact_area:.3f}")
 print(f"Error = {abs(exact_area - total_area):.3f}")
 
