@@ -105,5 +105,4 @@ plt.text(lowerB, max(y_vals),
          fontsize=10)
 plt.legend()
 plt.grid(True, linestyle='--', alpha=0.6)
-
 plt.show()
