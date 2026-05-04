@@ -23,7 +23,8 @@ dx = (upperB - lowerB) / numRect
 total_area = 0
 
 print("\n" + "="*50)
-print(f"Rectangle Method: {method}")
+method_names = {"L": "Left", "R": "Right", "M": "Midpoint"}
+print(f"Rectangle Method: {method_names[method]}")
 print("="*50)
 
 # Rectangle calculation
@@ -44,8 +45,6 @@ for i in range(numRect):
 
     height = f(x_sample)
     area = abs(height * dx)
-    height = round(f(x_sample), 3)
-    area = round(abs(height * dx), 3)
     total_area += area
 
     print(f"Rect {i+1}: interval [{left:.3f}, {right:.3f}] "
@@ -57,10 +56,7 @@ print("="*50)
 print(f"Total estimated area = {total_area:.3f}")
 print("="*50)
 
-exact_area, _ = quad(f, lowerB, upperB)
-
-method_names = {"L": "Left", "R": "Right", "M": "Midpoint"}
-print(f"Rectangle Method: {method_names[method]}")
+exact_area, _ = quad(lambda x: abs(f(x)), lowerB, upperB)
 print(f"Exact area = {exact_area:.3f}")
 print(f"Error = {abs(exact_area - total_area):.3f}")
 
