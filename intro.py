@@ -102,6 +102,6 @@ plt.text(lowerB, max(y_vals),
          f"Area ≈ {total_area:.3f}",
          fontsize=10)
 plt.legend()
-plt.grid()
+plt.grid(True, linestyle='--', alpha=0.6)
 
 plt.show()
