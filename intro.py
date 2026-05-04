@@ -44,6 +44,8 @@ for i in range(numRect):
 
     height = f(x_sample)
     area = abs(height * dx)
+    height = round(f(x_sample), 3)
+    area = round(abs(height * dx), 3)
     total_area += area
 
     print(f"Rect {i+1}: interval [{left:.3f}, {right:.3f}] "
